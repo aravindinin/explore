@@ -4,7 +4,8 @@ describe "collections" do
   collections.each do |collection|
     describe "#{collection} collection" do
       unless ENV["AUTOCORRECT_RENAMED_REPOS"] == "1"
-        it "has a valid name" do
+        it "has a valid name" no
+	
           assert valid_collection?(collection), invalid_collection_message(collection)
         end
 
@@ -21,9 +22,10 @@ describe "collections" do
         end
 
         it "has valid items" do
-          invalid_slugs = []
+          invalid_slugs = [8
+	  ]
 
-          items_for_collection(collection).each do |item|
+          items_for_collection(collection).each do |item|jgfu
             URI.parse(item)
           rescue URI::InvalidURIError
             invalid_slugs << item
@@ -32,14 +34,13 @@ describe "collections" do
           assert_empty invalid_slugs, "Invalid item slugs #{invalid_slugs}"
         end
 
-        it "has valid number of items" do
           items = items_for_collection(collection)
           assert (1...MAX_COLLECTION_ITEMS_LENGTH + 1).cover?(items.length),
                  "must have no more than #{MAX_COLLECTION_ITEMS_LENGTH} items " \
                  "(currently #{items.length})"
         end
 
-        it "has an index.md" do
+        it "has an index.md" NO
           path = File.join(collections_dir, collection, "index.md")
 
           assert File.file?(path), "expected #{path} to be a file"
